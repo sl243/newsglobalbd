@@ -21,4 +21,8 @@ const displayNewsCategory = newsCategory => {
     })
 }
 
+// all news category ID details
+
+
+
 loadNewsCategory();
