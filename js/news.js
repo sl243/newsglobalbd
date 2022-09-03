@@ -41,19 +41,19 @@ const displayNews = display => {
             <div class="card m-3">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="${news.image_url}" class="img-fluid rounded-start" alt="...">
+                        <img src="${news.image_url}" class="img-fluid h-100 rounded-start" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">${news.title}</h5>
                             <p class="card-text">${news.details.slice(0, 400) + ' ... '}</p>
                             <div class="container text-center">
-                                <div class="row">
+                                <div class="row mt-5">
                                     <div class="col-6">
                                         <div class="container text-center">
                                             <div class="row">
                                                 <div class="col">
-                                                    <img src="${news.author.img}" class="img-fluid rounded-start" alt="...">
+                                                    <img src="${news.author.img}" class="img-fluid w-50 h-70 rounded-start" alt="...">
                                                 </div>
                                                 <div class="col">
                                                 <h6>${news.author.name}</h6>
@@ -63,13 +63,13 @@ const displayNews = display => {
                                         </div> 
                                     </div>
                                     <div class="col">
-                                    Column
+                                        <p> <i class="fa-regular fa-eye"></i> ${news.total_view} </p>
                                     </div>
                                     <div class="col">
-                                    Column
+                                        <p> ${news.rating ? news.rating.number : " No Rating"} </p>
                                     </div>
                                     <div class="col">
-                                    Column
+                                        <button type="button" class="btn btn-outline-primary">Details</button>
                                     </div>
                                 </div>
                                 </div>
