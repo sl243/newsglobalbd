@@ -1,12 +1,17 @@
 const loadNewsCategory = async () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
-    const res = await fetch(url);
-    const data = await res.json();
-    displayNewsCategory(data.data.news_category);
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        displayNewsCategory(data.data.news_category);
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 const displayNewsCategory = newsCategory => {
-    console.log(newsCategory[0].category_name);
+    // console.log(newsCategory[0].category_name);
     const navbarContainer = document.getElementById('navbar-container');
 
     // const itemsName = document.getElementById('items-name');
@@ -32,6 +37,7 @@ const loadNewsId = (category_id) => {
     fetch(url)
         .then(res => res.json())
         .then(data => displayNews(data.data))
+        .catch(error => console.log(error))
 }
 
 const displayNews = display => {
@@ -40,7 +46,10 @@ const displayNews = display => {
     newsDisplay.innerHTML = '';
     // total news items 
     const newsItems = document.getElementById('news-items');
-    newsItems.innerText = display.length;
+    newsItems.innerText = display.length ? display.length : 'No';
+
+    // sort by total view
+    display.sort((a, b) => b.total_view - a.total_view);
 
     display.forEach(news => {
         // console.log(news)
@@ -65,14 +74,14 @@ const displayNews = display => {
                                                     <img src="${news.author.img}" class="img-fluid w-50 h-70 rounded-start" alt="...">
                                                 </div>
                                                 <div class="col">
-                                                <h6>${news.author.name}</h6>
+                                                <h6>${news.author.name ? news.author.name : 'No Author'}</h6>
                                                 <p> ${news.author.published_date}</P>
                                                 </div>               
                                             </div>
                                         </div> 
                                     </div>
                                     <div class="col">
-                                        <p> <i class="fa-regular fa-eye"></i> ${news.total_view} </p>
+                                        <p> <i class="fa-regular fa-eye"></i> ${news.total_view ? news.total_view : 'No View'} </p>
                                     </div>
                                     <div class="col">
                                         <p> ${news.rating ? news.rating.number : " No Rating"} </p>
@@ -106,7 +115,6 @@ const toggleSpinner = isLoading => {
         spinner.classList.add('d-none');
     }
 }
-
 // const displayModal = document.getElementById('newsModalLabel');
 // displayModal.innerText = news.total_view;
 
