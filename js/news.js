@@ -39,19 +39,7 @@ const loadNewsId = (category_id) => {
 }
 
 const displayNews = display => {
-<<<<<<< HEAD
-=======
-    // console.log(display[0])
-    // modal 
-    const modalNews = document.getElementById('newsModalLabel');
-    modalNews.innerText = display[0].title;
-
-    // const modalBody = document.getElementById('modal-body');
-    // modalBody.innerHTML = `
-    //     <p> Author: ${display[0].author.name} </p>
-    // `;
->>>>>>> 0a184571d0d35152da25c166844f6f0e31d14122
-
+    // console.log(display);
     const newsDisplay = document.getElementById('news-display');
     newsDisplay.innerHTML = '';
 
@@ -63,10 +51,7 @@ const displayNews = display => {
     display.sort((a, b) => b.total_view - a.total_view);
 
     display.forEach(news => {
-        console.log(news)
-
-        // modal
-<<<<<<< HEAD
+        // console.log(news)
         const modalNews = document.getElementById('newsModalLabel');
         modalNews.innerText = display[0].title;
 
@@ -78,12 +63,6 @@ const displayNews = display => {
             <p> Publish Date: ${news.author.published_date ? news.author.published_date : 'No Date'} </p>
             <p> Total View: ${news.total_view ? news.total_view : 'No View'} </p>
             <p> Total View: ${news.rating.number ? news.rating.number : 'No Rating'} </p>
-=======
-
-        const modalBody = document.getElementById('modal-body');
-        modalBody.innerHTML = `
-            <p> Author: ${news.author.name} </p>
->>>>>>> 0a184571d0d35152da25c166844f6f0e31d14122
         `;
 
         const div = document.createElement('news-display');
