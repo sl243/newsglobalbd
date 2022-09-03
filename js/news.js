@@ -14,8 +14,6 @@ const displayNewsCategory = newsCategory => {
     // console.log(newsCategory[0].category_name);
     const navbarContainer = document.getElementById('navbar-container');
 
-    // const itemsName = document.getElementById('items-name');
-    // itemsName.innerText = newsCategory[0].category_name;
 
     newsCategory.forEach(news => {
         // console.log(news);
@@ -41,15 +39,6 @@ const loadNewsId = (category_id) => {
 }
 
 const displayNews = display => {
-    // console.log(display[0])
-    // modal 
-    const modalNews = document.getElementById('newsModalLabel');
-    modalNews.innerText = display[0].title;
-
-    // const modalBody = document.getElementById('modal-body');
-    // modalBody.innerHTML = `
-    //     <p> Author: ${display[0].author.name} </p>
-    // `;
 
     const newsDisplay = document.getElementById('news-display');
     newsDisplay.innerHTML = '';
@@ -65,10 +54,17 @@ const displayNews = display => {
         console.log(news)
 
         // modal
+        const modalNews = document.getElementById('newsModalLabel');
+        modalNews.innerText = display[0].title;
 
         const modalBody = document.getElementById('modal-body');
         modalBody.innerHTML = `
-            <p> Author: ${news.author.name} </p>
+            <p>${news.details} </p>
+            <p> Author: ${news.author.name ? news.author.name : 'No Author'} </p>
+            <img src="${news.author.img}" class="img-fluid w-50 h-70 rounded-start" alt="...">
+            <p> Publish Date: ${news.author.published_date ? news.author.published_date : 'No Date'} </p>
+            <p> Total View: ${news.total_view ? news.total_view : 'No View'} </p>
+            <p> Total View: ${news.rating.number ? news.rating.number : 'No Rating'} </p>
         `;
 
         const div = document.createElement('news-display');
@@ -133,7 +129,6 @@ const toggleSpinner = isLoading => {
         spinner.classList.add('d-none');
     }
 }
-// const displayModal = document.getElementById('newsModalLabel');
-// displayModal.innerText = news.total_view;
+
 
 loadNewsCategory();
