@@ -6,8 +6,12 @@ const loadNewsCategory = async () => {
 }
 
 const displayNewsCategory = newsCategory => {
-    // console.log(newsCategory);
+    console.log(newsCategory[0].category_name);
     const navbarContainer = document.getElementById('navbar-container');
+
+    // const itemsName = document.getElementById('items-name');
+    // itemsName.innerText = newsCategory[0].category_name;
+
     newsCategory.forEach(news => {
         // console.log(news);
         const li = document.createElement('li');
@@ -34,18 +38,21 @@ const displayNews = display => {
     // console.log(display)
     const newsDisplay = document.getElementById('news-display');
     newsDisplay.innerHTML = '';
+    // total news items 
+    const newsItems = document.getElementById('news-items');
+    newsItems.innerText = display.length;
 
     display.forEach(news => {
-        console.log(news)
+        // console.log(news)
         const div = document.createElement('news-display');
         div.classList.add('card');
         div.innerHTML = ` 
-            <div class="card m-3 border-0">
+            <div class="card m-4 border-0">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="${news.thumbnail_url}" class="img-fluid h-100 w-100 rounded-start" alt="...">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 ps-3">
                         <div class="card-body">
                             <h5 class="card-title my-5">${news.title}</h5>
                             <p class="card-text mb-5">${news.details.slice(0, 400) + ' ... '}</p>
@@ -84,6 +91,7 @@ const displayNews = display => {
         `;
         newsDisplay.appendChild(div);
     })
+
     // stop spiner 
     toggleSpinner(false)
 }
