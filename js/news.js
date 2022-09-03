@@ -41,9 +41,19 @@ const loadNewsId = (category_id) => {
 }
 
 const displayNews = display => {
-    // console.log(display)
+    // console.log(display[0])
+    // modal 
+    const modalNews = document.getElementById('newsModalLabel');
+    modalNews.innerText = display[0].title;
+
+    // const modalBody = document.getElementById('modal-body');
+    // modalBody.innerHTML = `
+    //     <p> Author: ${display[0].author.name} </p>
+    // `;
+
     const newsDisplay = document.getElementById('news-display');
     newsDisplay.innerHTML = '';
+
     // total news items 
     const newsItems = document.getElementById('news-items');
     newsItems.innerText = display.length ? display.length : 'No';
@@ -52,7 +62,15 @@ const displayNews = display => {
     display.sort((a, b) => b.total_view - a.total_view);
 
     display.forEach(news => {
-        // console.log(news)
+        console.log(news)
+
+        // modal
+
+        const modalBody = document.getElementById('modal-body');
+        modalBody.innerHTML = `
+            <p> Author: ${news.author.name} </p>
+        `;
+
         const div = document.createElement('news-display');
         div.classList.add('card');
         div.innerHTML = ` 
@@ -75,7 +93,7 @@ const displayNews = display => {
                                                 </div>
                                                 <div class="col">
                                                 <h6>${news.author.name ? news.author.name : 'No Author'}</h6>
-                                                <p> ${news.author.published_date}</P>
+                                                <p> ${news.author.published_date ? news.author.published_date : 'No Date'}</P>
                                                 </div>               
                                             </div>
                                         </div> 
