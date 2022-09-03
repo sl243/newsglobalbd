@@ -18,10 +18,12 @@ const displayNewsCategory = newsCategory => {
         </li>
         `;
         navbarContainer.appendChild(li);
+
     })
 }
 
 const loadNewsId = (category_id) => {
+    toggleSpinner(true)
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     fetch(url)
         .then(res => res.json())
@@ -38,15 +40,15 @@ const displayNews = display => {
         const div = document.createElement('news-display');
         div.classList.add('card');
         div.innerHTML = ` 
-            <div class="card m-3">
+            <div class="card m-3 border-0">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="${news.image_url}" class="img-fluid h-100 rounded-start" alt="...">
+                        <img src="${news.thumbnail_url}" class="img-fluid h-100 w-100 rounded-start" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">${news.title}</h5>
-                            <p class="card-text">${news.details.slice(0, 400) + ' ... '}</p>
+                            <h5 class="card-title my-5">${news.title}</h5>
+                            <p class="card-text mb-5">${news.details.slice(0, 400) + ' ... '}</p>
                             <div class="container text-center">
                                 <div class="row mt-5">
                                     <div class="col-6">
@@ -69,7 +71,9 @@ const displayNews = display => {
                                         <p> ${news.rating ? news.rating.number : " No Rating"} </p>
                                     </div>
                                     <div class="col">
-                                        <button type="button" class="btn btn-outline-primary">Details</button>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal">
+                                        Details
+                                        </button>
                                     </div>
                                 </div>
                                 </div>
@@ -80,7 +84,22 @@ const displayNews = display => {
         `;
         newsDisplay.appendChild(div);
     })
-
+    // stop spiner 
+    toggleSpinner(false)
 }
+
+
+const toggleSpinner = isLoading => {
+    const spinner = document.getElementById('spinner');
+    if (isLoading) {
+        spinner.classList.remove('d-none');
+    }
+    else {
+        spinner.classList.add('d-none');
+    }
+}
+
+// const displayModal = document.getElementById('newsModalLabel');
+// displayModal.innerText = news.total_view;
 
 loadNewsCategory();
