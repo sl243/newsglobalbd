@@ -41,14 +41,39 @@ const displayNews = display => {
             <div class="card m-3">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="${news ? news.image_url : 'News Not Found'}" class="img-fluid rounded-start" alt="...">
+                        <img src="${news.image_url}" class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">${news.title}</h5>
                             <p class="card-text">${news.details.slice(0, 400) + ' ... '}</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
+                            <div class="container text-center">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="container text-center">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <img src="${news.author.img}" class="img-fluid rounded-start" alt="...">
+                                                </div>
+                                                <div class="col">
+                                                <h6>${news.author.name}</h6>
+                                                <p> ${news.author.published_date}</P>
+                                                </div>               
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="col">
+                                    Column
+                                    </div>
+                                    <div class="col">
+                                    Column
+                                    </div>
+                                    <div class="col">
+                                    Column
+                                    </div>
+                                </div>
+                                </div>
+                             </div>
                     </div>
                 </div>
             </div> 
