@@ -14,7 +14,6 @@ const displayNewsCategory = newsCategory => {
     // console.log(newsCategory[0].category_name);
     const navbarContainer = document.getElementById('navbar-container');
 
-
     newsCategory.forEach(news => {
         // console.log(news);
         const li = document.createElement('li');
@@ -86,8 +85,8 @@ const displayNews = display => {
                                                     <img src="${news.author.img}" class="img-fluid w-50 h-70 rounded-start" alt="...">
                                                 </div>
                                                 <div class="col">
-                                                <h6>${news.author.name ? news.author.name : 'No Author'}</h6>
-                                                <p> ${news.author.published_date ? news.author.published_date : 'No Date'}</P>
+                                                    <h6>${news.author.name ? news.author.name : 'No Author'}</h6>
+                                                    <p> ${news.author.published_date ? news.author.published_date : 'No Date'}</P>
                                                 </div>               
                                             </div>
                                         </div> 
@@ -104,8 +103,8 @@ const displayNews = display => {
                                         </button>
                                     </div>
                                 </div>
-                                </div>
                              </div>
+                        </div>
                     </div>
                 </div>
             </div> 
